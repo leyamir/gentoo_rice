@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Date
+date=$(date +'%a %I:%M %p')
+
+# Battery
+bat=$(cat /sys/class/power_supply/BAT0/capacity)
+
+# Kernel
+ker=$(uname -r)
+
+# Status bar
+echo $ker "|" $bat"%" "|" $date ""
