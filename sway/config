@@ -1,0 +1,162 @@
+### Variables
+
+set $mod Mod4
+
+floating_modifier $mod normal
+for_window [app_id="launcher"] floating enable 
+for_window [app_id="launcher"] border normal
+
+set $left h
+set $down j
+set $up k
+set $right l
+set $term foot
+
+set $ws1 "one"
+set $ws2 "two"
+set $ws3 "three"
+set $ws4 "four"
+set $ws5 "five"
+set $ws6 "six"
+set $ws7 "seven"
+set $ws8 "eight"
+set $ws9 "night"
+set $ws0 "zero"
+
+set $menu S_A_R=1 foot -a=launcher -T run
+
+### Input devices
+
+input "1739:52837:VEN_06CB:00_06CB:CE65_Touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    pointer_accel 1
+}
+
+### Output devices
+
+output eDP-1 resolution 1920x1080 position 1920,0 scale 1.3
+output * bg /home/k4i/Medias/Pictures/wallpapers/moon1.jpg fill
+
+### Key bindings
+
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bindsym $mod+Return exec $term
+bindsym $mod+r exec $menu 
+bindsym $mod+q kill
+bindsym $mod+Shift+c reload
+bindsym Print exec grim
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+bindsym $mod+Escape exec lock_screen
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
+
+bindsym $mod+e splith
+bindsym $mod+s splitv
+bindsym $mod+f fullscreen
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+mode "change window size" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+c mode "change window size"
+
+### Look and feel
+
+default_border pixel 4
+default_floating_border pixel 4
+
+bar {
+    position top
+    font "JetBrainsMono"
+    gaps 10
+    height 32
+    workspace_min_width 42
+
+    colors {
+        statusline #bdbdbd
+        background #080808
+	focused_workspace #323437 #323437 #bdbdbd
+	active_workspace #323437 #323437 #bdbdbd
+        inactive_workspace #080808 #080808 #bdbdbd
+	urgent_workspace #ff5454 #ff5454 #080808
+	binding_mode #ff5454 #ff5454 #080808
+    }
+
+    status_command while /home/k4i/.local/bin/sway-status; do sleep 20; done
+}
+
+gaps inner 10
+client.focused          #74b2dd #74b2dd #323437 #74b2dd #74b2dd 
+client.focused_inactive #32343700 #32343700 #32343700 #32343700   #32343700
+client.unfocused        #32343700 #32343700 #32343700 #32343700   #32343700
+client.urgent           #ff5454 #ff5454 #323437 #ff5454 #ff5454 
+client.placeholder      #32343700 #32343700 #32343700 #32343700   #32343700
+client.background       #32343700 
+
+### Misc
+
+xwayland enable
