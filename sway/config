@@ -12,16 +12,16 @@ set $up k
 set $right l
 set $term foot
 
-set $ws1 "one"
-set $ws2 "two"
-set $ws3 "three"
-set $ws4 "four"
-set $ws5 "five"
-set $ws6 "six"
-set $ws7 "seven"
-set $ws8 "eight"
-set $ws9 "night"
-set $ws0 "zero"
+set $ws1 " one "
+set $ws2 " two "
+set $ws3 " three "
+set $ws4 " four "
+set $ws5 " five "
+set $ws6 " six "
+set $ws7 " seven "
+set $ws8 " eight "
+set $ws9 " night "
+set $ws0 " zero "
 
 set $menu S_A_R=1 foot -a=launcher -T run
 
@@ -37,7 +37,7 @@ input "1739:52837:VEN_06CB:00_06CB:CE65_Touchpad" {
 ### Output devices
 
 output eDP-1 resolution 1920x1080 position 1920,0 scale 1.3
-output * bg /home/k4i/Medias/Pictures/wallpapers/moon1.jpg fill
+output * bg /home/k4i/Medias/Pictures/wallpapers/moon2.png fill
 
 ### Key bindings
 
@@ -126,36 +126,33 @@ bindsym $mod+c mode "change window size"
 
 ### Look and feel
 
-default_border pixel 4
-default_floating_border pixel 4
+default_border pixel 3
+default_floating_border pixel 3
 
 bar {
-    position top
+    position bottom
     font "JetBrainsMono"
-    gaps 10
-    height 32
-    workspace_min_width 42
+    height 36
 
     colors {
         statusline #bdbdbd
         background #080808
-	focused_workspace #323437 #323437 #bdbdbd
-	active_workspace #323437 #323437 #bdbdbd
+        focused_workspace #323437 #323437 #bdbdbd
+        active_workspace #323437 #323437 #bdbdbd
         inactive_workspace #080808 #080808 #bdbdbd
-	urgent_workspace #ff5454 #ff5454 #080808
-	binding_mode #ff5454 #ff5454 #080808
+        urgent_workspace #ff5454 #ff5454 #080808
+        binding_mode #ff5454 #ff5454 #080808
     }
 
     status_command while /home/k4i/.local/bin/sway-status; do sleep 20; done
 }
 
-gaps inner 10
-client.focused          #74b2dd #74b2dd #323437 #74b2dd #74b2dd 
-client.focused_inactive #32343700 #32343700 #32343700 #32343700   #32343700
-client.unfocused        #32343700 #32343700 #32343700 #32343700   #32343700
+client.focused          #949494 #949494 #323437 #949494 #949494 
+client.focused_inactive #323437 #323437 #323437 #323437 #323437
+client.unfocused        #323437 #323437 #323437 #323437 #323437
 client.urgent           #ff5454 #ff5454 #323437 #ff5454 #ff5454 
-client.placeholder      #32343700 #32343700 #32343700 #32343700   #32343700
-client.background       #32343700 
+client.placeholder      #323437 #323437 #323437 #323437 #323437
+client.background       #323437 
 
 ### Misc
 
